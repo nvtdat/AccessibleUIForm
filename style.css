@@ -1,0 +1,226 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #e0e0e0;
+}
+
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+ 
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.sub-header {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    gap: 10px;
+    position: relative;
+    
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="password"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+input::-ms-reveal,
+input::-ms-clear {
+    display: none;
+}
+
+.form select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.submit-button {
+    position: relative;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.form.submit-button:hover {
+    background-color: #0056b3;
+}
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+
+}
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: #666;
+}
+
+.circle-progress {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.circle-progress svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg); /* để vòng tròn bắt đầu từ 12 giờ */
+}
+
+.circle-bg,
+.circle-bar {
+    fill: none;
+    stroke-width: 8;
+}
+
+.circle-bg {
+    stroke: #ddd;
+}
+
+.circle-bar {
+    stroke: #28a745;
+    stroke-linecap: round;            /* đầu nét bo tròn */
+    stroke-dasharray: 282.74;         /* chu vi = 2 × π × 45 */
+    stroke-dashoffset: 282.74;        /* ban đầu giấu hết (0%) */
+    transition: stroke-dashoffset 0.3s ease;
+}
+
+.circle-text {
+    position: absolute;
+    inset: 0;                         /* phủ kín khung cha */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.form-container {
+    padding: 20px;
+
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 100px;
+}
+.progress-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.progress-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.progress-note-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 20px;
+    margin-top: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    min-height: 300px;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.progress-note {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 10px;
+}
+
+.progress-note-list {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+}
+.progress-note-list.checkmark {
+    text-decoration: line-through;
+    margin-right: 5px;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}

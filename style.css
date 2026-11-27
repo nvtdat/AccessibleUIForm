@@ -1,226 +1,269 @@
+/* ========== Reset & biến màu ========== */
 *, *::before, *::after {
   box-sizing: border-box;
+}
+
+:root {
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --success: #16a34a;
+  --error: #dc2626;
+  --text: #1f2937;
+  --text-muted: #4b5563;
+  --border: #d1d5db;
+  --border-strong: #6b7280; /* viền input, đạt tương phản 3:1 */
+  --bg: #f3f4f6;
+  --surface: #ffffff;
 }
 
 body {
   margin: 0;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background-color: #e0e0e0;
+  background-color: var(--bg);
+  color: var(--text);
 }
 
+/* Input, select, button không tự kế thừa font */
+input,
+select,
+button {
+  font-family: inherit;
+}
 
+/* ========== Header ========== */
 .header-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 20px;
- 
-}
-
-.main-content {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .header {
   font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: #333;
-  justify-content: center;
-  align-items: center;
+  font-weight: 700;
+  margin: 0 0 10px;
+  color: var(--text);
   text-align: center;
 }
 
 .sub-header {
   font-size: 18px;
-  margin-bottom: 15px;
-  color: #555;
+  font-weight: 500;
+  margin: 0;
+  color: var(--text-muted);
+  text-align: center;
 }
 
+/* ========== Khung chính ========== */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: var(--surface);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;          /* màn hình hẹp thì tự xuống dòng */
+  gap: 60px;
+  width: 100%;
+  padding: 20px;
+}
+
+/* ========== Form ========== */
 .form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 400px;
-    height: 100%;
-    gap: 10px;
-    position: relative;
-    
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  gap: 10px;
 }
 
 .form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
 }
 
 .label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  font-size: 16px;
 }
 
 .form input[type="text"],
 .form input[type="email"],
-.form input[type="password"] {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 15px;
+.form input[type="password"],
+.form select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  font-size: 15px;
+  background-color: var(--surface);
+  color: var(--text);
 }
 
+.form input::placeholder {
+  color: var(--text-muted);
+}
+
+.form input:focus-visible,
+.form select:focus-visible,
+.submit-button:focus-visible,
+.toggle-password:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Ẩn nút mắt mặc định của Edge */
 input::-ms-reveal,
 input::-ms-clear {
-    display: none;
+  display: none;
 }
 
-.form select {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-}
-
-.submit-button {
-    position: relative;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.form.submit-button:hover {
-    background-color: #0056b3;
-}
-
+/* ========== Ô mật khẩu + icon mắt ========== */
 .password-wrapper {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-
+  position: relative;
+  display: flex;
 }
+
+.password-wrapper input {
+  padding-right: 40px;      /* chừa chỗ cho icon */
+}
+
 .toggle-password {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-    color: #666;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.toggle-password:hover {
+  color: var(--primary);
+}
+
+/* ========== Nút Sign Up ========== */
+.submit-button {
+  width: 100%;
+  padding: 12px 20px;
+  background-color: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.form .submit-button:hover {
+  background-color: var(--primary-hover);
+}
+
+/* ========== Vòng tiến trình ========== */
+.progress-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.progress-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 10px;
 }
 
 .circle-progress {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    margin-bottom: 20px;
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin-bottom: 20px;
 }
 
 .circle-progress svg {
-    width: 100%;
-    height: 100%;
-    transform: rotate(-90deg); /* để vòng tròn bắt đầu từ 12 giờ */
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);   /* bắt đầu từ 12 giờ */
 }
 
 .circle-bg,
 .circle-bar {
-    fill: none;
-    stroke-width: 8;
+  fill: none;
+  stroke-width: 8;
 }
 
 .circle-bg {
-    stroke: #ddd;
+  stroke: var(--border);
 }
 
 .circle-bar {
-    stroke: #28a745;
-    stroke-linecap: round;            /* đầu nét bo tròn */
-    stroke-dasharray: 282.74;         /* chu vi = 2 × π × 45 */
-    stroke-dashoffset: 282.74;        /* ban đầu giấu hết (0%) */
-    transition: stroke-dashoffset 0.3s ease;
+  stroke: var(--success);
+  stroke-linecap: round;
+  stroke-dasharray: 282.74;    /* chu vi = 2 × π × 45 */
+  stroke-dashoffset: 282.74;   /* ban đầu 0% */
+  transition: stroke-dashoffset 0.3s ease;
 }
 
 .circle-text {
-    position: absolute;
-    inset: 0;                         /* phủ kín khung cha */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-    font-size: 18px;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 22px;
 }
 
-.form-container {
-    padding: 20px;
-
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 100px;
-}
-.progress-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.progress-title {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
+/* ========== Bảng ghi chú / checklist ========== */
 .progress-note-panel {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    background-color: #f1f1f1;
-    padding: 10px;
-    border-radius: 20px;
-    margin-top: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-    height: 100%;
-    min-height: 300px;
-    overflow-y: auto;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 200px;
+  padding: 20px;
+  background-color: var(--bg);
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
 }
 
 .progress-note {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 10px;
 }
 
 .progress-note-list {
-    font-size: 18px;
-    font-weight: 500;
-    color: #333;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text);
+  transition: opacity 0.3s ease, color 0.3s ease;
 }
+
 .progress-note-list.checkmark {
-    text-decoration: line-through;
-    margin-right: 5px;
-    opacity: 0.6;
-    transition: opacity 0.3s ease;
+  text-decoration: line-through;
+  color: var(--success);
+  opacity: 0.7;
 }
